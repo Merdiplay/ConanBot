@@ -1,4 +1,5 @@
-   const config = require('./config.json');
+
+    const config = require('./config.json');
 const Discord = require('discord.js');
 const util = require('util');
 const bot = new Discord.Client({
@@ -41,8 +42,16 @@ bot.on("message", async message => {
             return; 
         }
 
-        else if (cmd === 'ping') { // ping > pong just in case..
+        else if (cmd === 'nani') { // ping > pong just in case..
+            return message.channel.send('omae wa mou shindeiru');
+        }
+
+        else if (cmd === 'ping') { 
             return message.channel.send('pong');
+        }
+
+        else if (cmd === 'zitat') { 
+            return message.channel.send('Wie das fließende Wasser keine Form hat und der Wind unsichtbar ist, so können auch Schlussfolgerungen in jedem Fall alle möglichen Formen annehmen.');
         }
 
         // Make sure this command always checks for you. YOU NEVER WANT ANYONE ELSE TO USE THIS COMMAND
@@ -52,7 +61,7 @@ bot.on("message", async message => {
         }
 
         else { // if the command doesn't match anything you can say something or just ignore it
-            message.channel.send(`I don't know what command that is.`);
+            message.channel.send(`Ich weiß nicht was du meinst!`);
             return;
         }
         
@@ -62,6 +71,8 @@ bot.on("message", async message => {
     }
     return;
 });
+
+
 
 function evalCmd(message, code) {
     if(message.author.id !== config.owner) return;
